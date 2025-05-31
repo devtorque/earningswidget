@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_BENZINGA_API_KEY: string
+  readonly VITE_BENZINGA_API_BASE_URL: string
 }
 
 interface ImportMeta {
