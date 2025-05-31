@@ -1,10 +1,17 @@
 import EarningCalendar from "./components";
 
-function App() {
+type Props = {
+  config?: {
+    apiKey?: string;
+    baseUrl?: string;
+  };
+};
+
+function App({ config }: Props) {
   return (
     <div className="w-full h-full">
       <div className="min-w-[1200px] flex justify-center mx-auto">
-        <EarningCalendar />
+        <EarningCalendar apiKey={config?.apiKey} baseUrl={config?.baseUrl} />
       </div>
     </div>
   );

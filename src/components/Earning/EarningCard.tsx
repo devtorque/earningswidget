@@ -2,8 +2,13 @@ import { useEarningsData } from '../../hooks/useEarningsData';
 import { ErrorComponent } from '../ErrorComponent';
 import EarningsDisplay from './EarningsDisplay';
 
-function EarningCard() {
-  const { earnings, logos, loading, error } = useEarningsData();
+type Props = {
+  apiKey?: string;
+  baseUrl?: string;
+};
+
+function EarningCard({ apiKey, baseUrl }: Props) {
+  const { earnings, logos, loading, error } = useEarningsData({ apiKey, baseUrl });
 
   if (error) return (
     <ErrorComponent error={error} />

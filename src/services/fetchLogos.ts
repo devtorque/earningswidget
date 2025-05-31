@@ -1,18 +1,11 @@
 import axios from "axios";
 
-const API_KEY = import.meta.env.VITE_BENZINGA_API_KEY;
-const API_BASE_URL = import.meta.env.VITE_BENZINGA_API_BASE_URL;
-
-if (!API_KEY) {
-  throw new Error('VITE_BENZINGA_API_KEY is not defined in environment variables');
-}
-
 interface LogosResult {
   data: { [symbol: string]: string } | null;
   error: string | null;
 }
 
-export const fetchLogos = async (tickers: string[]): Promise<LogosResult> => {
+export const fetchLogos = async (tickers: string[], API_KEY: string, API_BASE_URL: string): Promise<LogosResult> => {
   try {
     if (tickers.length === 0) return { data: {}, error: null };
     

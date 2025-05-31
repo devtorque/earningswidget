@@ -5,11 +5,17 @@ import { daysOfWeek, type Session, type EarningsGrouped, type Earning } from "..
 import { getSession } from "../utils/getSession";
 import { getLastMondayTimestamp } from "../utils/getLastMondayTimestamp";
 
-export function useEarningsData() {
+type Props = {
+  apiKey?: string;
+  baseUrl?: string;
+};
+
+export function useEarningsData({ apiKey, baseUrl }: Props) {
   const [earnings, setEarnings] = useState<EarningsGrouped>({});
   const [logos, setLogos] = useState<{ [symbol: string]: string }>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
 
   useEffect(() => {
     let isMounted = true;
@@ -18,7 +24,11 @@ export function useEarningsData() {
       try {
         setLoading(true);
         setError(null);
-        const { data: earningsList, error: fetchError } = await fetchEarnings();
+        if (!apiKey || !baseUrl) {
+          setError('Please add your API key and base URL to the .env file');
+          return;
+        }
+        const { data: earningsList, error: fetchError } = await fetchEarnings(apiKey, baseUrl);
 
         if (!isMounted) return;
 
@@ -56,10 +66,8 @@ export function useEarningsData() {
 
         if (!isMounted) return;
 
-        console.log('grouped ->', grouped);
-
         setEarnings(grouped);
-        const { data: logosMap, error: logosError } = await fetchLogos(Array.from(tickers));
+        const { data: logosMap, error: logosError } = await fetchLogos(Array.from(tickers), apiKey, baseUrl);
         
         if (!isMounted) return;
         
@@ -77,7 +85,7 @@ export function useEarningsData() {
         console.error('Error loading earnings:', err);
       } finally {
         if (isMounted) {
-          setTimeout(() => setLoading(false), 2000);
+          setTimeout(() => setLoading(false), 500);
         }
       }
     };
@@ -87,6 +95,7 @@ export function useEarningsData() {
     return () => {
       isMounted = false;
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { earnings, logos, loading, error };
