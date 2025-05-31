@@ -4,12 +4,15 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  define: {
+    'process.env': {},
+  },
   build: {
     lib: {
       entry: './src/mount.tsx',
       name: 'EarningsWidget',
       formats: ['umd', 'iife'],
-      fileName: 'earnings-widget',
+      fileName: (format) => `earnings-widget.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],

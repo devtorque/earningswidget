@@ -6,7 +6,7 @@ type WidgetConfig = {
   baseUrl: string;
 };
 
-(window as unknown as Record<string, unknown>).renderEarningsWidget = (selector: string, config: WidgetConfig) => {
+export function renderEarningsWidget(selector: string, config: WidgetConfig) {
   const container = document.querySelector(selector);
   if (!container) {
     console.error("EarningsWidget: container not found:", selector);
@@ -26,3 +26,5 @@ type WidgetConfig = {
   const root = createRoot(container);
   root.render(<App config={config} />);
 };
+
+(window as any).renderEarningsWidget = renderEarningsWidget;
