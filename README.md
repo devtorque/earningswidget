@@ -81,21 +81,25 @@ calendarwidget/
 # Steps for Adding it as a Widget
 
 ## 📦 Step 1: Build the Widget
- ``` Run the following command from the root of your project to generate the production build:```
+Run the following command from the root of your project to generate the production build:
 ```bash
     npm run build
 ```
+
 
 ## 🛠 Step 2: Locate the Build Output
 After building, the following files will be available inside the dist/ directory:
 earnings-widget.umd.js – The UMD JavaScript bundle.
 benzingacalendarwidget.css – The compiled stylesheet.
 
+
 ## 📁 Step 3: Copy Files to Your Project
 Copy both earnings-widget.umd.js and benzingacalendarwidget.css into the same directory where your HTML file is located 
 
+
 ## 🧾 Step 4: Prepare the HTML File
 If you don’t already have an HTML file, create one named index.html (or use your existing file). This file will host the widget.
+
 
 ## 🌐 Step 5: Include React & ReactDOM CDN (v18)
 Add the following <script> tags before your widget script in the <head> or before closing </body> tag:
@@ -122,15 +126,18 @@ Then before the closing </body> tag, include the UMD widget JS and call the rend
     </script>
 ```
 
+
 ## 🧱 Step 7: Add the Mount Container
 Somewhere inside your <body>, add a container element with an ID or class used by the widget renderer:
 ```bash
     <div id="widget"></div>
 ```
 
+
 ## 🚀 Step 8: Run the HTML File
 You can now open your HTML file directly in a browser or host it using any static server.
 or just double-click the index.html to open in a browser (if all assets are in the same folder).
+
 
 ## ✅ Example HTML Template
 ```bash
@@ -164,8 +171,7 @@ or just double-click the index.html to open in a browser (if all assets are in t
 ```
 
 
-
 ## 👥 Author
 
-- Shubham Sinha
+- [Shubham Sinha](https://www.linkedin.com/in/shubham-sinha-/)
 
