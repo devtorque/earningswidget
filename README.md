@@ -58,7 +58,7 @@ npx vitest
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: React 19
+- **Frontend Framework**: React 18
 - **Language**: TypeScript
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS
@@ -77,6 +77,93 @@ calendarwidget/
 ├── tsconfig.json     # TypeScript configuration
 └── package.json      # Project metadata and dependencies
 ```
+
+# Steps for Adding it as a Widget
+
+## 📦 Step 1: Build the Widget
+ ``` Run the following command from the root of your project to generate the production build:```
+```bash
+    npm run build
+```
+
+## 🛠 Step 2: Locate the Build Output
+After building, the following files will be available inside the dist/ directory:
+earnings-widget.umd.js – The UMD JavaScript bundle.
+benzingacalendarwidget.css – The compiled stylesheet.
+
+## 📁 Step 3: Copy Files to Your Project
+Copy both earnings-widget.umd.js and benzingacalendarwidget.css into the same directory where your HTML file is located 
+
+## 🧾 Step 4: Prepare the HTML File
+If you don’t already have an HTML file, create one named index.html (or use your existing file). This file will host the widget.
+
+## 🌐 Step 5: Include React & ReactDOM CDN (v18)
+Add the following <script> tags before your widget script in the <head> or before closing </body> tag:
+```bash
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+```
+⚠️ Note: React 19+ is not supported for UMD builds like this.
+
+
+## 🧩 Step 6: Include Widget Assets
+In your <head> section, include the CSS file:
+```bash
+    <link rel="stylesheet" href="./benzingacalendarwidget.css" />
+```
+Then before the closing </body> tag, include the UMD widget JS and call the render function:
+```bash
+    <script src="./earnings-widget.umd.js"></script>
+    <script>
+        renderEarningsWidget('#widget', {
+            apiKey: 'YOUR_BENZINGA_API_KEY',
+            baseUrl: 'YOUR_BENZINGA_API_BASE_URL' 
+        });
+    </script>
+```
+
+## 🧱 Step 7: Add the Mount Container
+Somewhere inside your <body>, add a container element with an ID or class used by the widget renderer:
+```bash
+    <div id="widget"></div>
+```
+
+## 🚀 Step 8: Run the HTML File
+You can now open your HTML file directly in a browser or host it using any static server.
+or just double-click the index.html to open in a browser (if all assets are in the same folder).
+
+## ✅ Example HTML Template
+```bash
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+            <meta charset="UTF-8" />
+            <title>Benzinga Earnings Widget</title>
+
+            <!-- Styles -->
+            <link rel="stylesheet" href="./benzingacalendarwidget.css" />
+
+            <!-- React CDN (Required) -->
+            <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+            <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+            </head>
+            <body>
+            <!-- Widget container -->
+            <div id="widget"></div>
+
+            <!-- Widget script and initialization -->
+            <script src="./earnings-widget.umd.js"></script>
+            <script>
+                renderEarningsWidget('#widget', {
+                apiKey: 'YOUR_BENZINGA_API_KEY',
+                baseUrl: 'YOUR_BENZINGA_API_BASE_URL'
+                });
+            </script>
+            </body>
+        </html>
+```
+
+
 
 ## 👥 Author
 
