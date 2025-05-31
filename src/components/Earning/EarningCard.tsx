@@ -3,8 +3,8 @@ import { ErrorComponent } from '../ErrorComponent';
 import EarningsDisplay from './EarningsDisplay';
 
 type Props = {
-  apiKey?: string;
-  baseUrl?: string;
+  apiKey: string;
+  baseUrl: string;
 };
 
 function EarningCard({ apiKey, baseUrl }: Props) {

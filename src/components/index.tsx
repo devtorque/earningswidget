@@ -2,8 +2,8 @@ import { CalendarHeader } from "./CalendarHeader";
 import { EarningCard } from "./Earning";
 
 type Props = {
-  apiKey?: string;
-  baseUrl?: string;
+  apiKey: string;
+  baseUrl: string;
 };
 
 const EarningCalendar = ({ apiKey, baseUrl }: Props) => (
