@@ -1,4 +1,7 @@
 import dayjs from 'dayjs';
+import logo from '../../assets/ewLogo.svg';
+
+
 import { getLastMondayTimestamp } from '../../utils/getLastMondayTimestamp';
 
 export const CalendarHeader = () => {
@@ -7,7 +10,7 @@ export const CalendarHeader = () => {
 
   return (
     <header className="flex my-2">
-      <img src="/ewLogo.svg" alt="logo" className="w-1/4" />
+      <img src={logo} alt="logo" className="w-1/4" />
       <div className="w-3/4 flex justify-center">
         <div className="flex flex-col">
           <span className="text-3xl font-bold">

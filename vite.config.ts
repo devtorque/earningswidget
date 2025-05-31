@@ -8,6 +8,7 @@ export default defineConfig({
     'process.env': {},
   },
   build: {
+    cssCodeSplit: false,
     lib: {
       entry: './src/mount.tsx',
       name: 'EarningsWidget',

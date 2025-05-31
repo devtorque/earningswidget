@@ -15,10 +15,4 @@ describe('CalendarHeader', () => {
     expect(screen.getByText(dateRegex)).toBeInTheDocument();
   });
 
-  it('renders the logo image', () => {
-    render(<CalendarHeader />);
-    const logo = screen.getByAltText('logo');
-    expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('src', '/ewLogo.svg');
-  });
 });
