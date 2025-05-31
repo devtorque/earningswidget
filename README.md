@@ -22,8 +22,12 @@ npm install
 ```
 
 3. Make a `.env` file
+
+```bash
 VITE_BENZINGA_API_KEY='Enter your Benzinga API key'
 VITE_BENZINGA_API_BASE_URL='Enter the Benzinga API URL'
+```
+
 
 ## 🏃‍♂️ Running the Project
 
@@ -46,16 +50,10 @@ To preview the production build locally:
 npm run preview
 ```
 
-### Linting
-To run ESLint and check for code quality issues:
-```bash
-npm run lint
-```
-
 ## 🧪 Testing
 The project uses Vitest for testing. Run tests with:
 ```bash
-npm test
+npx vitest
 ```
 
 ## 🛠️ Tech Stack
