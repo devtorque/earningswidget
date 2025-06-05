@@ -2,10 +2,10 @@ import dayjs from 'dayjs';
 import logo from '../../assets/ewLogo.svg';
 
 
-import { getLastMondayTimestamp } from '../../utils/getLastMondayTimestamp';
+import { getLastMondayDate } from '../../utils/getLastMondayDate';
 
 export const CalendarHeader = () => {
-  const lastMonday = dayjs.unix(getLastMondayTimestamp());
+  const lastMonday = dayjs(getLastMondayDate());
   const formattedDate = lastMonday.format('MMMM D, YYYY');
 
   return (

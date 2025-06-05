@@ -3,7 +3,6 @@ import { fetchEarnings } from "../services/fetchEarnings";
 import { fetchLogos } from "../services/fetchLogos";
 import { daysOfWeek, type Session, type EarningsGrouped, type Earning } from "../types/earningTypes";
 import { getSession } from "../utils/getSession";
-import { getLastMondayTimestamp } from "../utils/getLastMondayTimestamp";
 
 type Props = {
   apiKey?: string;
@@ -42,17 +41,13 @@ export function useEarningsData({ apiKey, baseUrl }: Props) {
           return;
         }
 
-        const lastMondayTimestamp = getLastMondayTimestamp();
-        const filteredEarningsList = earningsList.filter(
-          (item) => item.updated >= lastMondayTimestamp
-        );
-
         const grouped: EarningsGrouped = {};
         const tickers: Set<string> = new Set();
 
-        filteredEarningsList.forEach((item: Earning) => {
-          const dateUpdated = item.updated * 1000;
-          const date = new Date(dateUpdated);
+        console.log('earningsList', earningsList);
+
+        earningsList.forEach((item: Earning) => {
+          const date = new Date(item.date);
           const day = daysOfWeek[date.getDay() - 1];
           if (!day) return;
           const session = getSession(item.time);
