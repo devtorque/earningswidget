@@ -33,7 +33,7 @@ const EarningColumn: React.FC<Props> = ({ day, earnings, logos, loading }) => {
       {loading ? (
         <div className="flex flex-1 bg-gray-100 min-h-[650px] mb-2 mx-0.5 animate-pulse" />
       ) : (
-      <div className="flex flex-1 bg-white mb-2 mx-0.5 h-[650px] overflow-y-auto">
+      <div className="flex flex-1 bg-white mb-2 mx-0.5 min-h-[650px] overflow-y-auto">
         {day === 'Friday' ? (
           <div className="flex-1 flex flex-col items-center">
             <div className="flex flex-col items-center min-h-[160px] mt-2">

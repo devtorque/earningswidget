@@ -83,7 +83,7 @@ calendarwidget/
 ## 📦 Step 1: Build the Widget
 Run the following command from the root of your project to generate the production build:
 ```bash
-    npm run build
+    npm run build:lib
 ```
 
 
